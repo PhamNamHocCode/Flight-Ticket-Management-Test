@@ -18,7 +18,7 @@ namespace GUI.Features.Flight
 
         public FlightControl()
         {
-            InitializeComponent(); // Hàm này được gọi từ file .Designer.cs
+            InitializeComponent();
 
             // Khởi tạo các UserControl con
             flightCreateControl = new FlightCreateControl { Dock = DockStyle.Fill };
@@ -64,7 +64,7 @@ namespace GUI.Features.Flight
             RebuildTabButtons();
 
             // 2. Ẩn/Hiện các panel nội dung
-            // (Chúng ta theo logic gốc của bạn: 0=Create, 1=List, 2=Detail)
+            // (Chúng ta theo logic gốc của bạn: 0=List, 1=Create, 2=Detail)
 
             // Ẩn tất cả
             panelFlightCreate.Visible = false;
@@ -74,13 +74,13 @@ namespace GUI.Features.Flight
             // Chỉ hiện thị panel tương ứng
             switch (index)
             {
-                case 0: // Tab Danh sách (FlightCreateControl)
+                case 0: // Tab Danh sách (FlightListControl)
                     panelFlightCreate.Visible = true;
                     panelFlightCreate.BringToFront();
                     break;
-                case 1: // Tab Tạo mới (FlightListControl)
-                    panelFlightList.Visible = true;
-                    panelFlightList.BringToFront();
+                case 1: // Tab Tạo mới (FlightCreateControl)
+                    panelFlightCreate.Visible = true;
+                    panelFlightCreate.BringToFront();
                     break;
                 case 2: // Tab Chi tiết (Detail)
                     panelFlightDetail.Visible = true;
@@ -108,14 +108,24 @@ namespace GUI.Features.Flight
                 : new SecondaryButton("Tạo mới");
 
             // Gán lại sự kiện
-            buttonDanhSachChuyenBay.Click += buttonDanhSachChuyenBay_Click;
-            buttonTaoMoiChuyenBay.Click += buttonTaoMoiChuyenBay_Click;
+            buttonDanhSachChuyenBay.Click += buttonDanhSachChuyenBay_Click_1;
+            buttonTaoMoiChuyenBay.Click += buttonTaoMoiChuyenBay_Click_1;
 
             // Thêm lại vào FlowLayoutPanel
             panelTabs.Controls.Add(buttonDanhSachChuyenBay);
             panelTabs.Controls.Add(buttonTaoMoiChuyenBay);
 
             panelTabs.ResumeLayout(false);
+        }
+
+        private void buttonTaoMoiChuyenBay_Click_1(object sender, EventArgs e)
+        {
+            SwitchTab(1);
+        }
+
+        private void buttonDanhSachChuyenBay_Click_1(object sender, EventArgs e)
+        {
+            SwitchTab(0);
         }
     }
 }

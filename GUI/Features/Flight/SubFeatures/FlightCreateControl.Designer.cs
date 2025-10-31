@@ -28,8 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            SuspendLayout();
+            // 
+            // FlightCreateControl
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Name = "FlightCreateControl";
+            Size = new Size(1263, 681);
+            ResumeLayout(false);
         }
 
         #endregion

@@ -69,7 +69,7 @@
             timChuyenBay.Icon = null;
             timChuyenBay.IconSize = new Size(22, 22);
             timChuyenBay.IconSpacing = 10;
-            timChuyenBay.Location = new Point(1556, 111);
+            timChuyenBay.Location = new Point(1681, 124);
             timChuyenBay.Name = "timChuyenBay";
             timChuyenBay.NormalBackColor = Color.FromArgb(155, 209, 243);
             timChuyenBay.NormalBorderColor = Color.FromArgb(40, 40, 40);
@@ -138,7 +138,7 @@
             danhSachChuyenBay.SelectionBackColor = Color.FromArgb(155, 209, 243);
             danhSachChuyenBay.SelectionForeColor = Color.White;
             danhSachChuyenBay.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            danhSachChuyenBay.Size = new Size(1783, 674);
+            danhSachChuyenBay.Size = new Size(1887, 674);
             danhSachChuyenBay.TabIndex = 1;
             danhSachChuyenBay.CellContentClick += danhSachChuyenBay_CellContentClick;
             // 
@@ -207,13 +207,13 @@
             dateTimeNgayDi.BackColor = Color.Transparent;
             dateTimeNgayDi.CustomFormat = null;
             dateTimeNgayDi.LabelText = "Ngày đi";
-            dateTimeNgayDi.Location = new Point(270, 18);
+            dateTimeNgayDi.Location = new Point(396, 17);
             dateTimeNgayDi.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dateTimeNgayDi.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dateTimeNgayDi.Name = "dateTimeNgayDi";
             dateTimeNgayDi.Padding = new Padding(0, 4, 0, 8);
             dateTimeNgayDi.PlaceholderText = "";
-            dateTimeNgayDi.Size = new Size(151, 57);
+            dateTimeNgayDi.Size = new Size(284, 57);
             dateTimeNgayDi.TabIndex = 2;
             dateTimeNgayDi.Value = new DateTime(2025, 10, 30, 10, 5, 19, 31);
             dateTimeNgayDi.Load += dateTimeNgayDi_Load;
@@ -223,13 +223,13 @@
             dateTimeNgayVe.BackColor = Color.Transparent;
             dateTimeNgayVe.CustomFormat = null;
             dateTimeNgayVe.LabelText = "Ngày về";
-            dateTimeNgayVe.Location = new Point(453, 17);
+            dateTimeNgayVe.Location = new Point(714, 17);
             dateTimeNgayVe.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dateTimeNgayVe.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dateTimeNgayVe.Name = "dateTimeNgayVe";
             dateTimeNgayVe.Padding = new Padding(0, 4, 0, 8);
             dateTimeNgayVe.PlaceholderText = "";
-            dateTimeNgayVe.Size = new Size(151, 57);
+            dateTimeNgayVe.Size = new Size(284, 57);
             dateTimeNgayVe.TabIndex = 3;
             dateTimeNgayVe.Value = new DateTime(2025, 10, 30, 10, 5, 19, 31);
             dateTimeNgayVe.Load += dateTimeNgayVe_Load;
@@ -240,13 +240,13 @@
             noiCatCanh.DataSource = null;
             noiCatCanh.DisplayMember = "";
             noiCatCanh.LabelText = "Từ";
-            noiCatCanh.Location = new Point(636, 17);
+            noiCatCanh.Location = new Point(1035, 17);
             noiCatCanh.MinimumSize = new Size(140, 56);
             noiCatCanh.Name = "noiCatCanh";
             noiCatCanh.SelectedIndex = -1;
             noiCatCanh.SelectedItem = null;
             noiCatCanh.SelectedText = "";
-            noiCatCanh.Size = new Size(227, 56);
+            noiCatCanh.Size = new Size(360, 56);
             noiCatCanh.TabIndex = 4;
             noiCatCanh.ValueMember = "";
             noiCatCanh.Load += noiCatCanh_Load;
@@ -257,13 +257,13 @@
             noiHaCanh.DataSource = null;
             noiHaCanh.DisplayMember = "";
             noiHaCanh.LabelText = "Đến";
-            noiHaCanh.Location = new Point(898, 18);
+            noiHaCanh.Location = new Point(1418, 17);
             noiHaCanh.MinimumSize = new Size(140, 56);
             noiHaCanh.Name = "noiHaCanh";
             noiHaCanh.SelectedIndex = -1;
             noiHaCanh.SelectedItem = null;
             noiHaCanh.SelectedText = "";
-            noiHaCanh.Size = new Size(238, 56);
+            noiHaCanh.Size = new Size(371, 56);
             noiHaCanh.TabIndex = 5;
             noiHaCanh.ValueMember = "";
             noiHaCanh.Load += noiHaCanh_Load;
@@ -274,13 +274,13 @@
             khuHoi_MotChieu.DataSource = null;
             khuHoi_MotChieu.DisplayMember = "";
             khuHoi_MotChieu.LabelText = "Hành trình bay";
-            khuHoi_MotChieu.Location = new Point(41, 18);
+            khuHoi_MotChieu.Location = new Point(41, 17);
             khuHoi_MotChieu.MinimumSize = new Size(140, 56);
             khuHoi_MotChieu.Name = "khuHoi_MotChieu";
             khuHoi_MotChieu.SelectedIndex = -1;
             khuHoi_MotChieu.SelectedItem = null;
             khuHoi_MotChieu.SelectedText = "";
-            khuHoi_MotChieu.Size = new Size(197, 56);
+            khuHoi_MotChieu.Size = new Size(330, 56);
             khuHoi_MotChieu.TabIndex = 7;
             khuHoi_MotChieu.ValueMember = "";
             // 
@@ -309,7 +309,7 @@
             Controls.Add(danhSachChuyenBay);
             Controls.Add(timChuyenBay);
             Name = "FlightListControl";
-            Size = new Size(1817, 948);
+            Size = new Size(1967, 948);
             Load += FlightCreateControl_Load;
             ((System.ComponentModel.ISupportInitialize)danhSachChuyenBay).EndInit();
             ResumeLayout(false);

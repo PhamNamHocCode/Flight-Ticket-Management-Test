@@ -132,6 +132,13 @@ namespace GUI.Components.Inputs {
                 _combo.Text = value;
             }
         }
+        [Browsable(false)]
+        [Description("Gets or sets the value of the member property specified by the ValueMember property.")]
+        public object SelectedValue
+        {
+            get => _combo.SelectedValue;
+            set => _combo.SelectedValue = value;
+        }
         [Category("Data")]
         [Description("Gets or sets the data source for this ComboBox.")]
         public object DataSource

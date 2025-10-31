@@ -33,8 +33,8 @@ namespace GUI.Features.Flight
         private void InitializeComponent()
         {
             panelTabs = new FlowLayoutPanel();
-            buttonTaoMoiChuyenBay = new Button();
             buttonDanhSachChuyenBay = new Button();
+            buttonTaoMoiChuyenBay = new Button();
             panelContent = new Panel();
             panelFlightList = new Panel();
             panelFlightDetail = new Panel();
@@ -47,8 +47,8 @@ namespace GUI.Features.Flight
             // 
             panelTabs.AutoSize = true;
             panelTabs.BackColor = Color.White;
-            panelTabs.Controls.Add(buttonTaoMoiChuyenBay);
             panelTabs.Controls.Add(buttonDanhSachChuyenBay);
+            panelTabs.Controls.Add(buttonTaoMoiChuyenBay);
             panelTabs.Dock = DockStyle.Top;
             panelTabs.Location = new Point(0, 0);
             panelTabs.Name = "panelTabs";
@@ -56,23 +56,25 @@ namespace GUI.Features.Flight
             panelTabs.Size = new Size(572, 41);
             panelTabs.TabIndex = 0;
             // 
-            // buttonTaoMoiChuyenBay
-            // 
-            buttonTaoMoiChuyenBay.Location = new Point(27, 15);
-            buttonTaoMoiChuyenBay.Name = "buttonTaoMoiChuyenBay";
-            buttonTaoMoiChuyenBay.Size = new Size(75, 23);
-            buttonTaoMoiChuyenBay.TabIndex = 1;
-            buttonTaoMoiChuyenBay.Text = "Tạo mới chuyến bay";
-            buttonTaoMoiChuyenBay.UseVisualStyleBackColor = true;
-            // 
             // buttonDanhSachChuyenBay
             // 
-            buttonDanhSachChuyenBay.Location = new Point(108, 15);
+            buttonDanhSachChuyenBay.Location = new Point(27, 15);
             buttonDanhSachChuyenBay.Name = "buttonDanhSachChuyenBay";
             buttonDanhSachChuyenBay.Size = new Size(75, 23);
             buttonDanhSachChuyenBay.TabIndex = 0;
             buttonDanhSachChuyenBay.Text = "Danh sách chuyến bay";
             buttonDanhSachChuyenBay.UseVisualStyleBackColor = true;
+            buttonDanhSachChuyenBay.Click += buttonDanhSachChuyenBay_Click_1;
+            // 
+            // buttonTaoMoiChuyenBay
+            // 
+            buttonTaoMoiChuyenBay.Location = new Point(108, 15);
+            buttonTaoMoiChuyenBay.Name = "buttonTaoMoiChuyenBay";
+            buttonTaoMoiChuyenBay.Size = new Size(75, 23);
+            buttonTaoMoiChuyenBay.TabIndex = 1;
+            buttonTaoMoiChuyenBay.Text = "Tạo mới chuyến bay";
+            buttonTaoMoiChuyenBay.UseVisualStyleBackColor = true;
+            buttonTaoMoiChuyenBay.Click += buttonTaoMoiChuyenBay_Click_1;
             // 
             // panelContent
             // 
