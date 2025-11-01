@@ -1,131 +1,101 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using GUI.Components.Buttons; // Cần thêm
+using GUI.Components.Buttons; // Cần thiết để dùng Primary/Secondary Button
 using GUI.Features.Flight.SubFeatures;
 
 namespace GUI.Features.Flight
 {
+    // Đảm bảo đây là 'partial class' để liên kết với file .Designer.cs
     public partial class FlightControl : UserControl
     {
         // Khai báo các UserControl con (các tab)
-        private FlightCreateControl flightCreateControl;
-        private FlightDetailControl flightDetailControl;
         private FlightListControl flightListControl;
+        private FlightCreateControl flightCreateControl;
+        // (Bạn có thể thêm flightDetailControl ở đây khi cần)
 
-        // Lưu tab đang được chọn
-        private int _currentIndex = 0;
+        // Khai báo các nút để có thể gán lại sự kiện
+        private Button buttonDanhSach;
+        private Button buttonTaoMoi;
 
         public FlightControl()
         {
-            InitializeComponent();
-
-            // Khởi tạo các UserControl con
-            flightCreateControl = new FlightCreateControl { Dock = DockStyle.Fill };
-            flightDetailControl = new FlightDetailControl { Dock = DockStyle.Fill };
-            flightListControl = new FlightListControl { Dock = DockStyle.Fill };
-
-            // Thêm các UserControl con vào các Panel host (đã được tạo trong Designer)
-            panelFlightCreate.Controls.Add(flightCreateControl);
-            panelFlightDetail.Controls.Add(flightDetailControl);
-            panelFlightList.Controls.Add(flightListControl);
+            InitializeComponent(); // Hàm này gọi file .Designer.cs
+            InitializeSubControls(); // Hàm tự viết để khởi tạo các UserControl con
         }
 
         private void FlightControl_Load(object sender, EventArgs e)
         {
             // Đảm bảo control tự lấp đầy khi được load
             this.Dock = DockStyle.Fill;
-
             // Hiển thị tab đầu tiên (Danh sách)
             SwitchTab(0);
         }
 
-        private void buttonDanhSachChuyenBay_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Khởi tạo các UserControl con và thêm vào panelContent
+        /// </summary>
+        private void InitializeSubControls()
         {
-            SwitchTab(0);
-        }
+            // Khởi tạo
+            flightListControl = new FlightListControl
+            {
+                Dock = DockStyle.Fill,
+                Visible = true // Ẩn ban đầu
+            };
 
-        private void buttonTaoMoiChuyenBay_Click(object sender, EventArgs e)
-        {
-            SwitchTab(1);
+            flightCreateControl = new FlightCreateControl
+            {
+                Dock = DockStyle.Fill,
+                Visible = true // Ẩn ban đầu
+            };
+
+            // Thêm vào panelContent
+            panelContent.Controls.Add(flightListControl);
+            panelContent.Controls.Add(flightCreateControl);
         }
 
         /// <summary>
         /// Hàm chính xử lý việc chuyển tab
         /// </summary>
-        void SwitchTab(int index)
+        /// <param name="index">0 = Danh sách, 1 = Tạo mới</param>
+        private void SwitchTab(int index)
         {
-            if (_currentIndex == index && panelTabs.Controls.Count > 0)
-                return; // Không cần làm gì nếu đã ở tab đó
+            // 1. Ẩn/Hiện các panel nội dung
+            flightListControl.Visible = (index == 0);
+            flightCreateControl.Visible = (index == 1);
 
-            _currentIndex = index;
-
-            // 1. Cập nhật giao diện các nút tab
-            RebuildTabButtons();
-
-            // 2. Ẩn/Hiện các panel nội dung
-            // (Chúng ta theo logic gốc của bạn: 0=List, 1=Create, 2=Detail)
-
-            // Ẩn tất cả
-            panelFlightCreate.Visible = false;
-            panelFlightList.Visible = false;
-            panelFlightDetail.Visible = false;
-
-            // Chỉ hiện thị panel tương ứng
-            switch (index)
-            {
-                case 0: // Tab Danh sách (FlightListControl)
-                    panelFlightCreate.Visible = true;
-                    panelFlightCreate.BringToFront();
-                    break;
-                case 1: // Tab Tạo mới (FlightCreateControl)
-                    panelFlightCreate.Visible = true;
-                    panelFlightCreate.BringToFront();
-                    break;
-                case 2: // Tab Chi tiết (Detail)
-                    panelFlightDetail.Visible = true;
-                    panelFlightDetail.BringToFront();
-                    break;
-            }
+            // 2. Cập nhật giao diện các nút tab (theo style của dự án)
+            RebuildTabButtons(index);
         }
 
         /// <summary>
-        /// Vẽ lại các nút tab (Primary/Secondary)
+        /// Vẽ lại các nút tab (Primary/Secondary) để cập nhật style
         /// </summary>
-        private void RebuildTabButtons()
+        private void RebuildTabButtons(int activeIndex)
         {
-            panelTabs.SuspendLayout();
-            panelTabs.Controls.Clear();
+            // Xóa các nút cũ khỏi panelButton
+            panelButton.Controls.Clear();
 
-            // Nút "Danh sách"
-            buttonDanhSachChuyenBay = (_currentIndex == 0)
-                ? new PrimaryButton("Danh sách")
-                : new SecondaryButton("Danh sách");
+            // Tạo lại nút "Danh sách"
+            if (activeIndex == 0)
+                buttonDanhSach = new PrimaryButton("Danh sách");
+            else
+                buttonDanhSach = new SecondaryButton("Danh sách");
 
-            // Nút "Tạo mới"
-            buttonTaoMoiChuyenBay = (_currentIndex == 1)
-                ? new PrimaryButton("Tạo mới")
-                : new SecondaryButton("Tạo mới");
+            // Tạo lại nút "Tạo mới"
+            if (activeIndex == 1)
+                buttonTaoMoi = new PrimaryButton("Tạo mới");
+            else
+                buttonTaoMoi = new SecondaryButton("Tạo mới");
 
-            // Gán lại sự kiện
-            buttonDanhSachChuyenBay.Click += buttonDanhSachChuyenBay_Click_1;
-            buttonTaoMoiChuyenBay.Click += buttonTaoMoiChuyenBay_Click_1;
+            // Gán lại sự kiện Click
+            buttonDanhSach.Click += (sender, e) => SwitchTab(0);
+            buttonTaoMoi.Click += (sender, e) => SwitchTab(1);
 
-            // Thêm lại vào FlowLayoutPanel
-            panelTabs.Controls.Add(buttonDanhSachChuyenBay);
-            panelTabs.Controls.Add(buttonTaoMoiChuyenBay);
-
-            panelTabs.ResumeLayout(false);
-        }
-
-        private void buttonTaoMoiChuyenBay_Click_1(object sender, EventArgs e)
-        {
-            SwitchTab(1);
-        }
-
-        private void buttonDanhSachChuyenBay_Click_1(object sender, EventArgs e)
-        {
-            SwitchTab(0);
+            // Thêm lại các nút vào panelButton
+            panelButton.Controls.Add(buttonDanhSach);
+            panelButton.Controls.Add(buttonTaoMoi);
         }
     }
 }

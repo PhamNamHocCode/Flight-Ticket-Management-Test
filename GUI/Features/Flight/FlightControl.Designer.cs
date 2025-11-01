@@ -1,5 +1,4 @@
-﻿using GUI.Components.Buttons;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace GUI.Features.Flight
@@ -32,109 +31,47 @@ namespace GUI.Features.Flight
         /// </summary>
         private void InitializeComponent()
         {
-            panelTabs = new FlowLayoutPanel();
-            buttonDanhSachChuyenBay = new Button();
-            buttonTaoMoiChuyenBay = new Button();
-            panelContent = new Panel();
-            panelFlightList = new Panel();
-            panelFlightDetail = new Panel();
-            panelFlightCreate = new Panel();
-            panelTabs.SuspendLayout();
-            panelContent.SuspendLayout();
-            SuspendLayout();
+            this.panelButton = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelContent = new System.Windows.Forms.Panel();
+            this.SuspendLayout();
             // 
-            // panelTabs
+            // panelButton
             // 
-            panelTabs.AutoSize = true;
-            panelTabs.BackColor = Color.White;
-            panelTabs.Controls.Add(buttonDanhSachChuyenBay);
-            panelTabs.Controls.Add(buttonTaoMoiChuyenBay);
-            panelTabs.Dock = DockStyle.Top;
-            panelTabs.Location = new Point(0, 0);
-            panelTabs.Name = "panelTabs";
-            panelTabs.Padding = new Padding(24, 12, 0, 0);
-            panelTabs.Size = new Size(572, 41);
-            panelTabs.TabIndex = 0;
-            // 
-            // buttonDanhSachChuyenBay
-            // 
-            buttonDanhSachChuyenBay.Location = new Point(27, 15);
-            buttonDanhSachChuyenBay.Name = "buttonDanhSachChuyenBay";
-            buttonDanhSachChuyenBay.Size = new Size(75, 23);
-            buttonDanhSachChuyenBay.TabIndex = 0;
-            buttonDanhSachChuyenBay.Text = "Danh sách chuyến bay";
-            buttonDanhSachChuyenBay.UseVisualStyleBackColor = true;
-            buttonDanhSachChuyenBay.Click += buttonDanhSachChuyenBay_Click_1;
-            // 
-            // buttonTaoMoiChuyenBay
-            // 
-            buttonTaoMoiChuyenBay.Location = new Point(108, 15);
-            buttonTaoMoiChuyenBay.Name = "buttonTaoMoiChuyenBay";
-            buttonTaoMoiChuyenBay.Size = new Size(75, 23);
-            buttonTaoMoiChuyenBay.TabIndex = 1;
-            buttonTaoMoiChuyenBay.Text = "Tạo mới chuyến bay";
-            buttonTaoMoiChuyenBay.UseVisualStyleBackColor = true;
-            buttonTaoMoiChuyenBay.Click += buttonTaoMoiChuyenBay_Click_1;
+            this.panelButton.AutoSize = true;
+            this.panelButton.BackColor = System.Drawing.Color.White;
+            this.panelButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelButton.Location = new System.Drawing.Point(0, 0);
+            this.panelButton.Name = "panelButton";
+            this.panelButton.Padding = new System.Windows.Forms.Padding(24, 12, 0, 0);
+            this.panelButton.Size = new System.Drawing.Size(1124, 12);
+            this.panelButton.TabIndex = 0;
             // 
             // panelContent
             // 
-            panelContent.Controls.Add(panelFlightList);
-            panelContent.Controls.Add(panelFlightDetail);
-            panelContent.Controls.Add(panelFlightCreate);
-            panelContent.Dock = DockStyle.Fill;
-            panelContent.Location = new Point(0, 41);
-            panelContent.Name = "panelContent";
-            panelContent.Size = new Size(572, 276);
-            panelContent.TabIndex = 1;
-            // 
-            // panelFlightList
-            // 
-            panelFlightList.Dock = DockStyle.Fill;
-            panelFlightList.Location = new Point(0, 0);
-            panelFlightList.Name = "panelFlightList";
-            panelFlightList.Size = new Size(572, 276);
-            panelFlightList.TabIndex = 1;
-            // 
-            // panelFlightDetail
-            // 
-            panelFlightDetail.Dock = DockStyle.Fill;
-            panelFlightDetail.Location = new Point(0, 0);
-            panelFlightDetail.Name = "panelFlightDetail";
-            panelFlightDetail.Size = new Size(572, 276);
-            panelFlightDetail.TabIndex = 2;
-            // 
-            // panelFlightCreate
-            // 
-            panelFlightCreate.Dock = DockStyle.Fill;
-            panelFlightCreate.Location = new Point(0, 0);
-            panelFlightCreate.Name = "panelFlightCreate";
-            panelFlightCreate.Size = new Size(572, 276);
-            panelFlightCreate.TabIndex = 0;
+            this.panelContent.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContent.Location = new System.Drawing.Point(0, 12);
+            this.panelContent.Name = "panelContent";
+            this.panelContent.Size = new System.Drawing.Size(1124, 639);
+            this.panelContent.TabIndex = 1;
             // 
             // FlightControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(panelContent);
-            Controls.Add(panelTabs);
-            Name = "FlightControl";
-            Size = new Size(572, 317);
-            Load += FlightControl_Load;
-            panelTabs.ResumeLayout(false);
-            panelContent.ResumeLayout(false);
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panelContent);
+            this.Controls.Add(this.panelButton);
+            this.Name = "FlightControl";
+            this.Size = new System.Drawing.Size(1124, 651);
+            this.Load += new System.EventHandler(this.FlightControl_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
         }
 
         #endregion
 
-        // Khai báo các biến control
-        private FlowLayoutPanel panelTabs; // Đổi từ Panel sang FlowLayoutPanel
-        private Button buttonDanhSachChuyenBay;
-        private Panel panelContent;
-        private Panel panelFlightDetail;
-        private Panel panelFlightCreate;
-        private Button buttonTaoMoiChuyenBay;
-        private Panel panelFlightList;
+        // Các panel-cha được định nghĩa ở đây
+        private System.Windows.Forms.FlowLayoutPanel panelButton;
+        private System.Windows.Forms.Panel panelContent;
     }
 }

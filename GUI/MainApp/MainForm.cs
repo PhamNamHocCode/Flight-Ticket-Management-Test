@@ -114,7 +114,7 @@ namespace GUI.MainApp {
                     IsVisible = r => true,
                     SubItems = {
                         ("Quản lý chuyến bay", r => true,
-                            () => LoadControl(new FlightControl())),
+                            () => LoadControl(new FlightControlold())),
                         ("Quy tắc giá vé", r => r == AppRole.Admin,
                             () => OpenFareRules())
                     }
@@ -317,7 +317,7 @@ namespace GUI.MainApp {
         // ===== Các hành động mở màn hình thực tế / stub tạm ======================
         private void OpenCreateFlight() {
             // Có thể mở form tạo hoặc load view tạo ở FlightControl
-            ShowControl("Flight", () => new FlightControl());
+            ShowControl("Flight", () => new FlightControlold());
             // TODO: chuyển tab nội bộ sang "Tạo chuyến bay" nếu cần
         }
 
