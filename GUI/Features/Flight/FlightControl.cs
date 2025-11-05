@@ -1,8 +1,9 @@
-﻿using System;
+﻿using GUI.Components.Buttons;
+using GUI.Features.Flight.SubFeatures;
+using GUI.MainApp;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using GUI.Components.Buttons;
-using GUI.Features.Flight.SubFeatures;
 
 namespace GUI.Features.Flight
 {
@@ -13,14 +14,23 @@ namespace GUI.Features.Flight
         private FlightListControl flightListControl;
 
         private int _currentIndex = 0;
-
-        public FlightControl()
+        private readonly AppRole _role;
+        public event Action<int> OnBookFlightRequested;
+        public FlightControl() : this(AppRole.Admin)
         {
+        }
+        public FlightControl(AppRole role)
+        {
+            _role = role;
             InitializeComponent();
-
+                
             flightCreateControl = new FlightCreateControl { Dock = DockStyle.Fill };
             flightDetailControl = new FlightDetailControl { Dock = DockStyle.Fill };
-            flightListControl = new FlightListControl { Dock = DockStyle.Fill };
+            flightListControl = new FlightListControl(_role) { Dock = DockStyle.Fill };
+
+            flightListControl.OnBookFlightRequested += (flightId) => {
+                OnBookFlightRequested?.Invoke(flightId);
+            };
 
             panelContent.Controls.Add(panelFlightList);
             panelContent.Controls.Add(panelFlightCreate);
@@ -37,6 +47,9 @@ namespace GUI.Features.Flight
         private void FlightControl_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
+
+            taoMoiChuyenBay.Visible = (_role == AppRole.Admin);
+
             SwitchTab(0);
         }
 

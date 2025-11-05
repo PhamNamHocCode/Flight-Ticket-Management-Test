@@ -2,15 +2,7 @@
 {
     partial class FlightListControl
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
-
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -21,16 +13,11 @@
         }
 
         #region Component Designer generated code
-
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             timChuyenBay = new GUI.Components.Buttons.PrimaryButton();
             danhSachChuyenBay = new GUI.Components.Tables.TableCustom();
             Column1 = new DataGridViewTextBoxColumn();
@@ -39,7 +26,6 @@
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
-            Column7 = new DataGridViewComboBoxColumn();
             Column8 = new DataGridViewTextBoxColumn();
             dateTimeNgayDi = new GUI.Components.Inputs.DateTimePickerCustom();
             dateTimeNgayVe = new GUI.Components.Inputs.DateTimePickerCustom();
@@ -47,6 +33,8 @@
             noiHaCanh = new GUI.Components.Inputs.UnderlinedComboBox();
             khuHoi_MotChieu = new GUI.Components.Inputs.UnderlinedComboBox();
             passengerSelectorControl1 = new GUI.Components.Inputs.PassengerSelectorControl();
+            cbHangVe = new GUI.Components.Inputs.UnderlinedComboBox();
+            underlinedTextField1 = new GUI.Components.Inputs.UnderlinedTextField();
             ((System.ComponentModel.ISupportInitialize)danhSachChuyenBay).BeginInit();
             SuspendLayout();
             // 
@@ -93,35 +81,35 @@
             danhSachChuyenBay.AllowUserToDeleteRows = false;
             danhSachChuyenBay.AllowUserToOrderColumns = true;
             danhSachChuyenBay.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(248, 250, 252);
-            danhSachChuyenBay.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(248, 250, 252);
+            danhSachChuyenBay.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             danhSachChuyenBay.BackgroundColor = Color.White;
             danhSachChuyenBay.BorderColor = Color.FromArgb(40, 40, 40);
             danhSachChuyenBay.BorderStyle = BorderStyle.None;
             danhSachChuyenBay.BorderThickness = 2;
             danhSachChuyenBay.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             danhSachChuyenBay.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.White;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(126, 185, 232);
-            dataGridViewCellStyle5.Padding = new Padding(12, 10, 12, 10);
-            dataGridViewCellStyle5.SelectionBackColor = Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(126, 185, 232);
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            danhSachChuyenBay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(126, 185, 232);
+            dataGridViewCellStyle2.Padding = new Padding(12, 10, 12, 10);
+            dataGridViewCellStyle2.SelectionBackColor = Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(126, 185, 232);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            danhSachChuyenBay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             danhSachChuyenBay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            danhSachChuyenBay.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8 });
+            danhSachChuyenBay.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column8 });
             danhSachChuyenBay.CornerRadius = 16;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(33, 37, 41);
-            dataGridViewCellStyle6.Padding = new Padding(12, 6, 12, 6);
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(155, 209, 243);
-            dataGridViewCellStyle6.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            danhSachChuyenBay.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(33, 37, 41);
+            dataGridViewCellStyle3.Padding = new Padding(12, 6, 12, 6);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(155, 209, 243);
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            danhSachChuyenBay.DefaultCellStyle = dataGridViewCellStyle3;
             danhSachChuyenBay.EnableHeadersVisualStyles = false;
             danhSachChuyenBay.GridColor = Color.FromArgb(230, 235, 240);
             danhSachChuyenBay.HeaderBackColor = Color.White;
@@ -130,6 +118,7 @@
             danhSachChuyenBay.Location = new Point(12, 251);
             danhSachChuyenBay.MultiSelect = false;
             danhSachChuyenBay.Name = "danhSachChuyenBay";
+            danhSachChuyenBay.ReadOnly = true;
             danhSachChuyenBay.RowAltBackColor = Color.FromArgb(248, 250, 252);
             danhSachChuyenBay.RowBackColor = Color.White;
             danhSachChuyenBay.RowForeColor = Color.FromArgb(33, 37, 41);
@@ -140,7 +129,6 @@
             danhSachChuyenBay.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             danhSachChuyenBay.Size = new Size(1887, 674);
             danhSachChuyenBay.TabIndex = 1;
-            danhSachChuyenBay.CellContentClick += danhSachChuyenBay_CellContentClick;
             // 
             // Column1
             // 
@@ -156,6 +144,7 @@
             Column2.DataPropertyName = "DepartureAirportName";
             Column2.HeaderText = "Nơi cất cánh";
             Column2.Name = "Column2";
+            Column2.ReadOnly = true;
             // 
             // Column3
             // 
@@ -189,18 +178,12 @@
             Column6.Name = "Column6";
             Column6.ReadOnly = true;
             // 
-            // Column7
-            // 
-            Column7.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column7.FlatStyle = FlatStyle.Flat;
-            Column7.HeaderText = "Chọn hạng vé";
-            Column7.Name = "Column7";
-            // 
             // Column8
             // 
             Column8.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Column8.HeaderText = "Thao tác";
             Column8.Name = "Column8";
+            Column8.ReadOnly = true;
             // 
             // dateTimeNgayDi
             // 
@@ -246,6 +229,7 @@
             noiCatCanh.SelectedIndex = -1;
             noiCatCanh.SelectedItem = null;
             noiCatCanh.SelectedText = "";
+            noiCatCanh.SelectedValue = null;
             noiCatCanh.Size = new Size(360, 56);
             noiCatCanh.TabIndex = 4;
             noiCatCanh.ValueMember = "";
@@ -263,6 +247,7 @@
             noiHaCanh.SelectedIndex = -1;
             noiHaCanh.SelectedItem = null;
             noiHaCanh.SelectedText = "";
+            noiHaCanh.SelectedValue = null;
             noiHaCanh.Size = new Size(371, 56);
             noiHaCanh.TabIndex = 5;
             noiHaCanh.ValueMember = "";
@@ -280,6 +265,7 @@
             khuHoi_MotChieu.SelectedIndex = -1;
             khuHoi_MotChieu.SelectedItem = null;
             khuHoi_MotChieu.SelectedText = "";
+            khuHoi_MotChieu.SelectedValue = null;
             khuHoi_MotChieu.Size = new Size(330, 56);
             khuHoi_MotChieu.TabIndex = 7;
             khuHoi_MotChieu.ValueMember = "";
@@ -294,13 +280,55 @@
             passengerSelectorControl1.Size = new Size(300, 155);
             passengerSelectorControl1.TabIndex = 8;
             // 
+            // cbHangVe
+            // 
+            cbHangVe.BackColor = Color.Transparent;
+            cbHangVe.DataSource = null;
+            cbHangVe.DisplayMember = "";
+            cbHangVe.LabelText = "Hạng vé";
+            cbHangVe.Location = new Point(396, 90);
+            cbHangVe.MinimumSize = new Size(140, 56);
+            cbHangVe.Name = "cbHangVe";
+            cbHangVe.SelectedIndex = -1;
+            cbHangVe.SelectedItem = null;
+            cbHangVe.SelectedText = "";
+            cbHangVe.SelectedValue = null;
+            cbHangVe.Size = new Size(330, 56);
+            cbHangVe.TabIndex = 9;
+            cbHangVe.ValueMember = "";
+            // 
+            // underlinedTextField1
+            // 
+            underlinedTextField1.BackColor = Color.Transparent;
+            underlinedTextField1.FocusedLineThickness = 3;
+            underlinedTextField1.InheritParentBackColor = true;
+            underlinedTextField1.LabelForeColor = Color.FromArgb(70, 70, 70);
+            underlinedTextField1.LabelText = "Nhãn";
+            underlinedTextField1.LineColor = Color.FromArgb(40, 40, 40);
+            underlinedTextField1.LineColorFocused = Color.FromArgb(0, 92, 175);
+            underlinedTextField1.LineThickness = 2;
+            underlinedTextField1.Location = new Point(396, 164);
+            underlinedTextField1.Name = "underlinedTextField1";
+            underlinedTextField1.Padding = new Padding(0, 4, 0, 8);
+            underlinedTextField1.PasswordChar = '\0';
+            underlinedTextField1.PlaceholderText = "Nhập mã chuyến bay . . .";
+            underlinedTextField1.ReadOnly = false;
+            underlinedTextField1.ReadOnlyLineColor = Color.FromArgb(200, 200, 200);
+            underlinedTextField1.ReadOnlyTextColor = Color.FromArgb(90, 90, 90);
+            underlinedTextField1.Size = new Size(330, 57);
+            underlinedTextField1.TabIndex = 10;
+            underlinedTextField1.TextForeColor = Color.FromArgb(30, 30, 30);
+            underlinedTextField1.UnderlineSpacing = 2;
+            underlinedTextField1.UseSystemPasswordChar = false;
+            // 
             // FlightListControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = Color.FromArgb(232, 240, 252);
-            Controls.Add(passengerSelectorControl1);
+            Controls.Add(underlinedTextField1);
+            Controls.Add(cbHangVe);
             Controls.Add(khuHoi_MotChieu);
             Controls.Add(noiHaCanh);
             Controls.Add(noiCatCanh);
@@ -308,6 +336,7 @@
             Controls.Add(dateTimeNgayDi);
             Controls.Add(danhSachChuyenBay);
             Controls.Add(timChuyenBay);
+            Controls.Add(passengerSelectorControl1);
             Name = "FlightListControl";
             Size = new Size(1967, 948);
             Load += FlightCreateControl_Load;
@@ -332,7 +361,8 @@
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
-        private DataGridViewComboBoxColumn Column7;
         private DataGridViewTextBoxColumn Column8;
+        private Components.Inputs.UnderlinedComboBox cbHangVe;
+        private Components.Inputs.UnderlinedTextField underlinedTextField1;
     }
 }

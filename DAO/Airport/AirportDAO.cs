@@ -29,12 +29,8 @@ namespace DAO.Airport
         }
         #endregion
 
-        /// <summary>
-        /// Lấy danh sách sân bay (ID và Tên hiển thị) để dùng cho ComboBox.
-        /// </summary>
         public DataTable GetAllAirportsForComboBox()
         {
-            // Chúng ta tạo một cột 'DisplayName' để hiển thị (Tên + Code) cho dễ nhìn
             string query = @"
                 SELECT 
                     airport_id, 
@@ -45,12 +41,40 @@ namespace DAO.Airport
                     airport_name";
             try
             {
-                // Dùng phương thức ExecuteQuery từ BaseDAO
                 return ExecuteQuery(query);
             }
             catch (Exception ex)
             {
                 throw new Exception("Lỗi khi lấy danh sách sân bay: " + ex.Message, ex);
+            }
+        }
+        public DataTable GetArrivalAirportsByDeparture(int departureAirportId)
+        {
+            string query = @"
+                SELECT DISTINCT
+                    arr.airport_id,
+                    CONCAT(arr.airport_name, ' (', arr.airport_code, ')') AS DisplayName
+                FROM 
+                    Routes r
+                JOIN 
+                    Airports arr ON r.arrival_place_id = arr.airport_id
+                WHERE
+                    r.departure_place_id = @departureAirportId
+                ORDER BY
+                    arr.airport_name";
+
+            var parameters = new Dictionary<string, object>
+            {
+                { "@departureAirportId", departureAirportId }
+            };
+
+            try
+            {
+                return ExecuteQuery(query, parameters);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy danh sách sân bay đến: " + ex.Message, ex);
             }
         }
     }
