@@ -542,9 +542,13 @@ namespace DAO.Flight
             }
         }
 
-        public DataTable GetFlightDetailsForDisplay()
+        public DataTable GetFlightDetailsForDisplay(
+            string? flightNumber = null,
+            int? departureAirportId = null,
+            int? arrivalAirportId = null,
+            DateTime? departureDate = null)
         {
-            string query = @"
+            var queryBuilder = new StringBuilder(@"
                 SELECT 
                     f.flight_number AS 'FlightNumber',
                     dep.airport_name AS 'DepartureAirportName',
@@ -560,11 +564,50 @@ namespace DAO.Flight
                     Airports dep ON r.departure_place_id = dep.airport_id
                 LEFT JOIN 
                     Airports arr ON r.arrival_place_id = arr.airport_id
-                ORDER BY 
-                    f.departure_time DESC";
+            ");
+
+            var parameters = new Dictionary<string, object>();
+            var whereClauses = new List<string>();
+
+            // 1. Filter Mã chuyến bay (LIKE)
+            if (!string.IsNullOrWhiteSpace(flightNumber))
+            {
+                whereClauses.Add("f.flight_number LIKE @flightNumber");
+                parameters["@flightNumber"] = $"%{flightNumber}%";
+            }
+
+            // 2. Filter Sân bay đi
+            if (departureAirportId.HasValue && departureAirportId > 0)
+            {
+                whereClauses.Add("r.departure_place_id = @departureAirportId");
+                parameters["@departureAirportId"] = departureAirportId.Value;
+            }
+
+            // 3. Filter Sân bay đến
+            if (arrivalAirportId.HasValue && arrivalAirportId > 0)
+            {
+                whereClauses.Add("r.arrival_place_id = @arrivalAirportId");
+                parameters["@arrivalAirportId"] = arrivalAirportId.Value;
+            }
+
+            // 4. Filter Ngày đi (chỉ lọc ngày, bỏ qua giờ)
+            if (departureDate.HasValue)
+            {
+                whereClauses.Add("DATE(f.departure_time) = DATE(@departureDate)");
+                parameters["@departureDate"] = departureDate.Value;
+            }
+
+            // Nối các điều kiện WHERE
+            if (whereClauses.Count > 0)
+            {
+                queryBuilder.Append(" WHERE " + string.Join(" AND ", whereClauses));
+            }
+
+            queryBuilder.Append(" ORDER BY f.departure_time DESC");
+
             try
             {
-                return ExecuteQuery(query);
+                return ExecuteQuery(queryBuilder.ToString(), parameters);
             }
             catch (Exception ex)
             {

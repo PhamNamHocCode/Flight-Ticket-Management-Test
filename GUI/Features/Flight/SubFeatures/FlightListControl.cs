@@ -25,24 +25,28 @@ namespace GUI.Features.Flight.SubFeatures
             InitializeComponent();
         }
         #region Data Loading
-        private void LoadFlightData()
+        private void LoadFlightData(
+            string? flightNumber,
+            int? departureAirportId,
+            int? arrivalAirportId,
+            DateTime? departureDate)
         {
             try
             {
-                var result = FlightBUS.Instance.SearchFlightsForDisplay(
-                    null, null, dateTimeNgayDi.Value, null);
-
-                if (result.Success)
-                {
-                    danhSachChuyenBay.DataSource = result.GetData<DataTable>();
-                }
+                DataTable dtFlights = FlightDAO.Instance.GetFlightDetailsForDisplay(
+                    flightNumber,
+                    departureAirportId,
+                    arrivalAirportId,
+                    departureDate
+                );
+                danhSachChuyenBay.DataSource = dtFlights;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi tải danh sách chuyến bay: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void FlightCreateControl_Load(object sender, EventArgs e)
+        private void FlightListControl_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
 
@@ -70,67 +74,43 @@ namespace GUI.Features.Flight.SubFeatures
             danhSachChuyenBay.CellMouseMove -= Table_CellMouseMove;
             danhSachChuyenBay.CellMouseMove += Table_CellMouseMove;
 
+            LoadFlightData(null, null, null, null);
             LoadInitialData();
-            LoadFlightData();
         }
         private void timChuyenBay_Click(object sender, EventArgs e)
         {
             try
             {
-                // 1. Thu thập dữ liệu
-                // Nếu không chọn, giá trị sẽ là DBNull.Value, và Convert sẽ trả về null
-                int? departureAirportId = (noiCatCanh.SelectedValue != null && noiCatCanh.SelectedValue != DBNull.Value)
-                    ? Convert.ToInt32(noiCatCanh.SelectedValue) : (int?)null;
+                // 1. Lấy mã chuyến bay
+                string? flightNumber = string.IsNullOrWhiteSpace(textFieldMaChuyenBay.Text)
+                    ? null
+                    : textFieldMaChuyenBay.Text;
 
-                int? arrivalAirportId = (noiHaCanh.SelectedValue != null && noiHaCanh.SelectedValue != DBNull.Value)
-                    ? Convert.ToInt32(noiHaCanh.SelectedValue) : (int?)null;
+                // 2. Lấy sân bay đi
+                int? depId = noiCatCanh.SelectedValue != null && noiCatCanh.SelectedValue != DBNull.Value
+                    ? Convert.ToInt32(noiCatCanh.SelectedValue)
+                    : null;
 
-                int? cabinClassId = (cbHangVe.SelectedValue != null && cbHangVe.SelectedValue != DBNull.Value)
-                    ? Convert.ToInt32(cbHangVe.SelectedValue) : (int?)null;
+                // 3. Lấy sân bay đến
+                int? arrId = noiHaCanh.SelectedValue != null && noiHaCanh.SelectedValue != DBNull.Value
+                    ? Convert.ToInt32(noiHaCanh.SelectedValue)
+                    : null;
 
-                DateTime departureDate = dateTimeNgayDi.Value;
-                bool isRoundTrip = (khuHoi_MotChieu.SelectedItem?.ToString() == "Khứ hồi");
+                // 4. Lấy ngày đi
+                DateTime? depDate = dateTimeNgayDi.Value;
 
-                // 2. Gọi FlightBUS
-                var result = FlightBUS.Instance.SearchFlightsForDisplay(
-                    departureAirportId,
-                    arrivalAirportId,
-                    departureDate,
-                    cabinClassId
-                );
-
-                // 3. Hiển thị kết quả
-                if (result.Success)
-                {
-                    DataTable dtFlights = result.GetData<DataTable>();
-                    danhSachChuyenBay.DataSource = dtFlights;
-
-                    if (dtFlights.Rows.Count == 0)
-                    {
-                        MessageBox.Show("Không tìm thấy chuyến bay nào phù hợp với tiêu chí của bạn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-
-                    if (isRoundTrip)
-                    {
-                        // TODO: Xử lý tìm chuyến về
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(result.GetFullErrorMessage(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    danhSachChuyenBay.DataSource = null;
-                }
+                LoadFlightData(flightNumber, depId, arrId, depDate);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi không mong muốn: {ex.Message}", "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Lỗi khi tìm kiếm: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void LoadInitialData()
         {
             try
             {
-                _isUpdatingComboBoxes = true; 
+                _isUpdatingComboBoxes = true;
 
                 // 1. Tải Hạng vé (Giữ nguyên từ bước trước)
                 DataTable dtCabinClasses = CabinClassDAO.Instance.GetAllCabinClasses();
@@ -452,6 +432,16 @@ namespace GUI.Features.Flight.SubFeatures
             {
                 dateTimeNgayVe.Value = selectedDepartureDate;
             }
+        }
+
+        private void textFieldMaChuyenBay_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxTimKiemMaChuyenBay_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
